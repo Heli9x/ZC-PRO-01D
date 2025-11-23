@@ -1,0 +1,653 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css");
+/* --- CSS VARIABLES (Theming) --- */
+:root {
+    --primary-yellow: #eccb0f; /* The mustard yellow from the screenshot */
+    --bg-dark: #121418;        /* Main background */
+    --card-bg: #1e2229;        /* Slightly lighter for cards */
+    --text-white: #ffffff;
+    --text-gray: #a0a0a0;
+    --accent-blue: #56ccf2;    /* For Transformer */
+    --accent-pink: #d856f2;    /* For Cosmecox */
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand';
+}
+
+body {
+    background-color: #000;
+    font-family: var(--font-main);
+    display: flex;
+    justify-content: center;
+    padding: 10px 10px;
+    color: var(--text-white);
+}
+
+/* Simulates a mobile screen width */
+.mobile-container, .app {
+    width: 100%;
+    background-color: var(--bg-dark);
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* --- COMPONENT 1: HERO HEADER --- */
+.hero-section {
+    background-color: var(--primary-yellow);
+    padding: 15px;
+    color: #000;
+    position: relative;
+    padding-bottom: 40px;
+    background-size: cover;
+    background-blend-mode: multiply;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+}
+
+.top-nav .brand{
+    color: #864708;
+}
+
+.nav-icons .icon {
+    margin-left: 10px;
+    font-size: 1.2rem;
+}
+
+.nav-icons .icon a{
+    color: var(--card-bg);
+    text-decoration: none;
+}
+
+.hero-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    font-family: "Rubik Wet Paint", sans-serif;
+    line-height: 2;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    position: relative;
+    text-align: center;
+    z-index: 2;
+    width: 100%;
+    color: #00aeff;
+    font-weight: 700;
+}
+
+/* The decorative big 'Z' */
+.big-z-graphic {
+    position: absolute;
+    top: 40px;
+    left: -10px;
+    font-size: 12rem;
+    opacity: 0.1;
+    font-weight: 900;
+    line-height: 0;
+    pointer-events: none;
+}
+
+.hero-collage {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: space-evenly;
+    overflow: hidden;
+    gap: 12px;
+    margin-top: 15px;
+    padding: 5px;
+    scroll-behavior: smooth;
+}
+
+.collage-item {
+    background: #333;
+    border-radius: 10px;
+    min-height: 150px;
+    width: 100px;
+    contain: content;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 10;
+    opacity: 0.7;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(236, 203, 15, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.collage-item .hide{
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 0%;
+    width: 100%;
+    background: linear-gradient(135deg, rgba(236, 203, 15, 0.15) 0%, rgba(0, 0, 0, 0.9) 100%);
+    color: var(--text-white);
+    font-weight: 600;
+    font-size: 0.85rem;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.collage-item:hover{
+    width: 200px;
+}
+
+.collage-item:hover .showonhover{
+    visibility: visible;
+    padding: 5px;
+    height: 100%;
+    opacity: 1;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.collage-item:hover{
+    z-index: 11;
+    opacity: 1;
+    transform: scale(1.15) translateY(-3px);
+    box-shadow: 0 12px 25px rgba(236, 203, 15, 0.25), 0 0 20px rgba(0, 0, 0, 0.6);
+    border-color: rgba(236, 203, 15, 0.5);
+}
+
+.collage-item:hover img{
+    filter: brightness(0.7) saturate(0.8);
+}
+
+/* Creating the visual variation in the collage placeholder */
+.item-1 { background: linear-gradient(135deg, #a43a3a 0%, #7a2a2a 100%); }
+.item-2 { background: linear-gradient(135deg, #3a8ca4 0%, #2a5a75 100%); }
+.item-3 { background: linear-gradient(135deg, #3aa455 0%, #2a7a35 100%); }
+
+
+/* --- COMPONENT 2: FEATURE BANNER --- */
+.feature-banner {
+    background-color: var(--card-bg);
+    margin: 15px;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+
+.feature-text h2 {
+    font-size: 1.5rem;
+    line-height: 1.1;
+    margin-top: 5px;
+}
+
+.subtitle {
+    font-size: 0.75rem;
+    color: var(--text-gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.feature-image-wrapper {
+    text-align: right;
+    width: 45%;
+}
+
+.img-placeholder {
+    max-height: 200px;
+    min-width: 100px;
+    width: auto;
+    background: linear-gradient(to top, #56ccf2, #ffffff); /* Simulates 'The Lab' cover */
+    border-radius: 8px;
+    margin-bottom: 5px;
+    position: relative;
+    contain: content;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.img-placeholder img{
+    height: inherit;
+    width: 100%;
+}
+/* Variant for Villain X */
+.villain-placeholder {
+    background: linear-gradient(to top, #5f2c82, #49a09d); 
+}
+
+.feature-meta {
+    display: flex;
+    flex-direction: column;
+}
+.feature-meta .title { font-weight: bold; font-size: 0.8rem; }
+.feature-meta .desc { font-size: 0.6rem; color: var(--text-gray); }
+
+
+/* --- COMPONENT 3: CHARACTER GRID --- */
+.heroes-section {
+    padding: 10px 15px;
+    margin-bottom: 20px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.btn-small {
+    background: transparent;
+    border: 1px solid var(--text-gray);
+    color: var(--text-white);
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.7rem;
+    cursor: pointer;
+}
+
+.character-grid ,.section-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.char-card {
+    background-color: #333;
+    border-radius: 6px;
+    padding: 5px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100px;
+    contain: content;
+}
+
+.char-img {
+    width: inherit;
+    aspect-ratio: 1 / 1.5; /* Portrait ratio */
+    background-color: #000;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+
+.char-img img{
+    height: 100%;
+    width: 100%;
+}
+
+/* Card Background Variants based on image */
+.card-blue .char-img { background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); }
+.card-pink .char-img { background: linear-gradient(to bottom, #ff9a9e, #fecfef); }
+.card-dark .char-img { background: linear-gradient(to bottom, #434343, #000000); }
+.card-navy .char-img { background: linear-gradient(to bottom, #1e3c72, #2a5298); }
+
+.char-name {
+    font-size: 0.55rem;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.char-id {
+    font-size: 0.5rem;
+    color: var(--text-gray);
+}
+
+
+/* --- COMPONENT 4: ANNOUNCEMENT --- */
+.announcement-section {
+    padding: 20px;
+    text-align: left;
+    border-top: 1px solid #333;
+    margin-top: 10px;
+}
+
+.announcement-section h3 {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.announcement-section p {
+    font-size: 0.7rem;
+    color: var(--text-gray);
+    margin-bottom: 15px;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--text-gray);
+    color: var(--text-white);
+    padding: 8px 20px;
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+/* --- COMPONENT 5: IMAGE MODAL --- */
+.image-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    cursor: pointer;
+}
+
+.modal-content {
+    position: relative;
+    z-index: 1001;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 90%;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: var(--text-white);
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 1002;
+}
+
+.modal-close:hover {
+    color: var(--primary-yellow);
+    transform: scale(1.2);
+}
+
+.modal-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    overflow-y: auto;
+    max-height: 80vh;
+}
+
+.modal-image {
+    max-width: 100%;
+    max-height: 70vh;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+.modal-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-white);
+    text-align: center;
+}
+
+/* --- COMPONENT 6: FEATURE MODAL --- */
+.feature-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    cursor: pointer;
+}
+
+.feature-modal-content {
+    position: relative;
+    z-index: 1001;
+    width: 90%;
+    max-width: 500px;
+    min-height: 400px;
+    border-radius: 12px;
+    padding: 30px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    animation: featureModalSlideIn 0.3s ease-out;
+    overflow: hidden;
+}
+
+@keyframes featureModalSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.feature-modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 40%, transparent 100%);
+    z-index: 0;
+}
+
+.feature-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--text-white);
+    font-size: 2.5rem;
+    cursor: pointer;
+    padding: 0;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 1002;
+}
+
+.feature-modal-close:hover {
+    color: var(--primary-yellow);
+    transform: scale(1.2);
+}
+
+.feature-modal-body {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.feature-modal-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-white);
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.feature-modal-description {
+    font-size: 0.95rem;
+    color: var(--text-white);
+    line-height: 1.6;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+/* --- COMPONENT 7: COPYRIGHT BOX --- */
+.copyright-box {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 500;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 12px 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    animation: copyrightSlideIn 0.4s ease-out;
+}
+
+@keyframes copyrightSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px) translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) translateY(0);
+    }
+}
+
+.copyright-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.copyright-logo {
+    width: 45px;
+    height: 45px;
+    border-radius: 6px;
+    object-fit: cover;
+    background-color: #000;
+    padding: 2px;
+}
+
+.copyright-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.copyright-company {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-white);
+    margin: 0;
+    line-height: 1;
+}
+
+.copyright-year {
+    font-size: 0.65rem;
+    color: var(--text-gray);
+    margin: 0;
+    line-height: 1;
+}
+
+/* Hide element on screens larger than 600px */
+@media (min-width: 600px) {
+    .mobile-only {
+        display: none !important;
+    }
+}
+
+/* Display compatibility message on screens larger than 600px */
+@media (max-width: 599px) {
+    .desktop-warning {
+        display: none !important;
+    }
+}
+
+.desktop-warning {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-dark);
+    padding: 20px;
+}
+
+.desktop-warning p {
+    font-size: 1.3rem;
+    color: var(--text-white);
+    text-align: center;
+    max-width: 600px;
+    line-height: 1.6;
+    font-weight: 500;
+}
